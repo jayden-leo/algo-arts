@@ -11,7 +11,32 @@ package c02_linkedlist;
 public class C001_TeamOrder {
 
     public static void main(String[] args) {
-        orderTeam(17);
+        orderTeam2(17);
+    }
+
+    private static void orderTeam2(int n) {
+        int[] res = new int[n];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = i + 1;
+        }
+        int count = 0;
+        for (int curIndex = 0; curIndex < n - 1; curIndex += count) {
+            count++;
+            if (count % 2 == 1) {
+                int left = curIndex;
+                int right = Math.min(n - 1, left + count-1);
+                while (left < right) {
+                    int temp = res[left];
+                    res[left] = res[right];
+                    res[right] = temp;
+                    left++;
+                    right--;
+                }
+            }
+        }
+        for (int i : res) {
+            System.out.print(i + " ");
+        }
     }
 
     private static void orderTeam(int n) {
@@ -20,7 +45,7 @@ public class C001_TeamOrder {
         int curNum = 1;
         int groupNum = 1;
         while (curIndex < n) {
-            int lastIndex = Math.min(curIndex + groupNum - 1, n-1);
+            int lastIndex = Math.min(curIndex + groupNum - 1, n - 1);
             if (groupNum % 2 == 1) {
                 int count = 0;
                 int temp = curIndex;

@@ -13,31 +13,33 @@ import java.util.HashSet;
  * 输入：n = 19
  * 输出：true
  * 解释：
- * 12 + 92 = 82
- * 82 + 22 = 68
- * 62 + 82 = 100
- * 12 + 02 + 02 = 1
- * link: https://translate.google.com/?hl=zh-CN&sl=auto&tl=en&text=%E5%AD%97%E6%AF%8D&op=translate
+ * 1^2 + 9^2 = 82
+ * 8^2 + 2^2 = 68
+ * 6^2 + 8^2 = 100
+ * 1^2 + 0^2 + 0^2 = 1
+ * link: https://leetcode.cn/problems/happy-number/
  */
 public class LC202_HappyNum {
     public boolean isHappy(int n) {
-        HashSet<Object> record = new HashSet<>();
-        while (n != 1 && !record.contains(n)) {
-            record.add(n);
-            n = getNextNumber(n);
+        HashSet<Integer> set = new HashSet<>();
+        set.add(n);
+        n = getNextNum(n);
+        while (n!=1 && !set.contains(n)) {
+            set.add(n);
+            n = getNextNum(n);
         }
-        return n == 1;
+        return n==1;
     }
 
-    private int getNextNumber(int n) {
-        int res = 0;
+    private int getNextNum(int n) {
+        int result = 0;
         while (n > 0) {
-            int temp = n % 10;
-            res += temp * temp;
+            result += (n % 10) * (n % 10);
             n = n / 10;
         }
-        return res;
+        return result;
     }
+
 
     public static void main(String[] args) {
         LC202_HappyNum lc202_happyNum = new LC202_HappyNum();

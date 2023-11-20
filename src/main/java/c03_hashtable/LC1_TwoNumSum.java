@@ -15,21 +15,20 @@ import java.util.HashMap;
 public class LC1_TwoNumSum {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
+        int[] result = new int[2];
         for (int i = 0; i < nums.length; i++) {
-            int need = target-nums[i];
-            if (map.containsKey(need)){
-                int[] result = new int[2];
-                result[0] = i;
-                result[1] = map.get(need);
-                return result;
+            int needN = target - nums[i];
+            if (map.containsKey(needN)){
+                result[0] = map.get(needN);
+                result[1] = i;
             }
             map.put(nums[i],i);
         }
-        return null;
+        return result;
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{3,2,4};
+        int[] nums = new int[]{3, 2, 4};
         LC1_TwoNumSum lc1_twoNumSum = new LC1_TwoNumSum();
         int[] ints = lc1_twoNumSum.twoSum(nums, 6);
         for (int anInt : ints) {

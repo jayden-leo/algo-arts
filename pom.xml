@@ -4,6 +4,5 @@
   <groupId>com.jayden</groupId>
   <artifactId>algorithm</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Archetype - algorithm</name>
-  <url>http://maven.apache.org</url>
+  <name>algo-arts</name>
 </project>

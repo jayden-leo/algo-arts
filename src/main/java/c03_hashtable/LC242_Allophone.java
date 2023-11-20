@@ -13,19 +13,17 @@ package c03_hashtable;
  */
 public class LC242_Allophone {
     public boolean isAnagram(String s, String t) {
-        int[] letterList = new int[26];
+        int[] letterCount = new int[26];
         char[] sChars = s.toCharArray();
         char[] tChars = t.toCharArray();
-        for (int i = 0; i < sChars.length; i++) {
-            int position = sChars[i] - 'a';
-            letterList[position] +=1;
+        for (char sChar : sChars) {
+            letterCount[sChar - 'a'] += 1;
         }
-        for (int i = 0; i < tChars.length; i++) {
-            int position = tChars[i] - 'a';
-            letterList[position] -=1;
+        for (char tChar : tChars) {
+            letterCount[tChar - 'a'] -= 1;
         }
-        for (int i : letterList) {
-            if (i!=0){
+        for (int i : letterCount) {
+            if (i != 0) {
                 return false;
             }
         }

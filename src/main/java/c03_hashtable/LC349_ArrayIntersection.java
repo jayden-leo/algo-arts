@@ -16,22 +16,17 @@ import java.util.HashSet;
 public class LC349_ArrayIntersection {
 
     public int[] intersection(int[] nums1, int[] nums2) {
-        HashSet<Integer> s1 = new HashSet<>();
-        HashSet<Integer> s2 = new HashSet<>();
-        for (int i : nums1) {
-            s1.add(i);
+        HashSet<Integer> nums1Set = new HashSet<>();
+        HashSet<Integer> nums2Set = new HashSet<>();
+        for (int num : nums1) {
+            nums1Set.add(num);
         }
-        for (int i : nums2) {
-            if (s1.contains(i)){
-                s2.add(i);
+        for (int num : nums2){
+            if (nums1Set.contains(num)){
+                nums2Set.add(num);
             }
         }
-        int count = 0;
-        int[] result = new int[s2.size()];
-        for (Integer integer : s2) {
-            result[count++] = integer;
-        }
-        return result;
+        return nums2Set.stream().mapToInt(Integer::intValue).toArray();
     }
 
     public static void main(String[] args) {
