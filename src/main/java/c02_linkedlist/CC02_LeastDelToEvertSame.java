@@ -11,7 +11,7 @@ import java.util.Set;
  * 输出:  2,2
  * 说明: 返回 1,1也是可以的。至少需要删除3 个节点。
  */
-public class CC02_LeastDeleteToSameNums {
+public class CC02_LeastDelToEvertSame {
     public ListNode solve (ListNode head) {
         HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
         ListNode dummy = new ListNode(-1);
@@ -19,8 +19,7 @@ public class CC02_LeastDeleteToSameNums {
         while(head!=null){
             if(map.containsKey(head.val)){
                 int x = map.get(head.val);
-                x++;
-                map.put(head.val, x);
+                map.put(head.val, ++x);
             }else{
                 map.put(head.val, 1);
             }
@@ -53,7 +52,7 @@ public class CC02_LeastDeleteToSameNums {
         int[] nums = {1,2,2,3,1};
         ListNode head = new ListNode(1,new ListNode(2,new ListNode(2,new ListNode(3,new ListNode(1)))));
 //        ListNode head = new ListNode(5);
-        CC02_LeastDeleteToSameNums c002_leastDeleteToSameNums = new CC02_LeastDeleteToSameNums();
+        CC02_LeastDelToEvertSame c002_leastDeleteToSameNums = new CC02_LeastDelToEvertSame();
         ListNode solve = c002_leastDeleteToSameNums.solve(head);
         while(solve!=null){
             System.out.print(solve.val+" ");
