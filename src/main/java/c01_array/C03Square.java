@@ -9,17 +9,18 @@ package c01_array;
  * 排序后，数组变为 [0,1,9,16,100]
  * link: https://leetcode.cn/problems/squares-of-a-sorted-array/description/
  */
-public class LC977_SquareArray {
-    public int[] sortedSquares(int[] nums) {
+public class C03Square {
+
+    public static int[] sortedSquares(int[] nums) {
         int[] result = new int[nums.length];
         int index = result.length-1;
         int left = 0;
         int right = nums.length - 1;
         while (left <= right) {
             if (nums[left] * nums[left] > nums[right] * nums[right]) {
-                result[index--] = nums[left] * nums[left++];
+                result[index--] = nums[left]*nums[left++];
             }else{
-                result[index--] = nums[right] * nums[right--];
+                result[index--] = nums[right]*nums[right--];
             }
         }
         return result;
@@ -27,10 +28,9 @@ public class LC977_SquareArray {
 
     public static void main(String[] args) {
         int[] nums = {-4, -1, 0, 3, 10};
-        LC977_SquareArray c03SquareArray = new LC977_SquareArray();
-        int[] ints = c03SquareArray.sortedSquares(nums);
-        for (int anInt : ints) {
-            System.out.print(anInt + " ");
+        int[] result = C03Square.sortedSquares(nums);
+        for (int num : result) {
+            System.out.print(num + " ");
         }
     }
 }

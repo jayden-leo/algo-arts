@@ -1,13 +1,14 @@
 package c02_linkedlist;
 
 /**
+ * 给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。
+ * 示例 1：
+ * 输入：head = [1,2,3,4]
+ * 输出：[2,1,4,3]
  * link: https://leetcode.cn/problems/swap-nodes-in-pairs/description/
  */
-public class LC24_ExchangeEachTwo {
-    public ListNode swapPairs(ListNode head) {
-        if (head==null || head.next==null){
-            return head;
-        }
+public class C04ExchangeEachTwo {
+    public static ListNode swapPairs(ListNode head) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode pre = dummy;
@@ -26,8 +27,7 @@ public class LC24_ExchangeEachTwo {
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
-        LC24_ExchangeEachTwo c04ExchangeElementEachTwo = new LC24_ExchangeEachTwo();
-        head = c04ExchangeElementEachTwo.swapPairs(head);
+        head = C04ExchangeEachTwo.swapPairs(head);
         while (head != null) {
             System.out.print(head.val + " ");
             head = head.next;

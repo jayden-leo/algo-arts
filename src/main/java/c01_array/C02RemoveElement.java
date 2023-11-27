@@ -11,8 +11,8 @@ package c01_array;
  * 例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案
  * link: https://leetcode.cn/problems/remove-element/
  */
-public class LC27_RemoveElement {
-    public int removeElement(int[] nums, int val) {
+public class C02RemoveElement {
+    public static int removeElement(int[] nums, int val) {
         int slow = 0;
         for (int fast = 0; fast < nums.length; fast++) {
             if (nums[fast]!=val){
@@ -24,9 +24,8 @@ public class LC27_RemoveElement {
 
     public static void main(String[] args) {
         int[] nums = {3, 2, 2, 3};
-        LC27_RemoveElement c02RemoveElement = new LC27_RemoveElement();
-        int result = c02RemoveElement.removeElement(nums, 3);
-        System.out.println(result);
+        int val = 3;
+        int index = removeElement(nums, val);
+        System.out.println(index);
     }
-
 }

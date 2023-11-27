@@ -4,19 +4,15 @@ package c02_linkedlist;
  * 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回 新的头节点 。
  * link: https://leetcode.cn/problems/remove-linked-list-elements/description/
  */
+public class C01RemoveElements {
 
-public class LC203_RemoveElement {
-
-    public ListNode removeElements(ListNode head, int val) {
-        if (head == null) {
-            return head;
-        }
+    public static ListNode removeElements(ListNode head, int val) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode pre = dummy;
         ListNode cur = head;
-        while (cur != null) {
-            if (cur.val == val) {
+        while(cur!=null){
+            if (cur.val==val){
                 pre.next = cur.next;
             }else{
                 pre = cur;
@@ -28,8 +24,7 @@ public class LC203_RemoveElement {
 
     public static void main(String[] args) {
         ListNode listNode = new ListNode(1,new ListNode(2,new ListNode(6,new ListNode(3,new ListNode(4,new ListNode(5,new ListNode(6)))))));
-        LC203_RemoveElement c01RemoveElement = new LC203_RemoveElement();
-        ListNode head = c01RemoveElement.removeElements(listNode, 6);
+        ListNode head = C01RemoveElements.removeElements(listNode, 6);
         while (head != null) {
             System.out.print(head.val + " ");
             head = head.next;

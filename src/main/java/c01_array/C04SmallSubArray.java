@@ -10,25 +10,26 @@ package c01_array;
  * 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
  * link: https://leetcode.cn/problems/minimum-size-subarray-sum/description/
  */
-public class LC209_SmallSubArray {
-    public int minSubArrayLen(int target, int[] nums) {
+public class C04SmallSubArray {
+
+    public static int minSubArrayLen(int target, int[] nums) {
         int left = 0;
-        int curSum = 0;
-        int minLen = Integer.MAX_VALUE;
-        for (int right = 0; right < nums.length; right++) {
-            curSum += nums[right];
-            while (curSum >= target) {
-                minLen = Math.min(minLen, right - left+1);
-                curSum -= nums[left++];
+        int right = 0;
+        int sum = 0;
+        int minLength = Integer.MAX_VALUE;
+        for (; right < nums.length; right++) {
+            sum += nums[right];
+            while (sum >= target) {
+                minLength = Math.min(minLength,right-left+1);
+                sum -= nums[left++];
             }
         }
-        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+        return minLength==Integer.MAX_VALUE?0:minLength;
     }
 
     public static void main(String[] args) {
         int[] nums = {2, 3, 1, 2, 4, 3};
-        LC209_SmallSubArray c04SmallSubArray = new LC209_SmallSubArray();
-        int i = c04SmallSubArray.minSubArrayLen(7, nums);
-        System.out.println(i);
+        int result = C04SmallSubArray.minSubArrayLen(7, nums);
+        System.out.println(result);
     }
 }
