@@ -15,34 +15,34 @@ package c02_linkedlist;
  */
 public class C06Intersection {
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode point1 = headA;
-        ListNode point2 = headB;
-        int length1 = 0;
-        int length2 = 0;
-        while (point1 != null) {
-            length1++;
-            point1 = point1.next;
+        ListNode pointA = headA;
+        ListNode pointB = headB;
+        int lenA = 0;
+        int lenB = 0;
+        while (pointA != null) {
+            pointA = pointA.next;
+            lenA++;
         }
-        while (point2 != null) {
-            length2++;
-            point2 = point2.next;
+        while (pointB != null) {
+            pointB = pointB.next;
+            lenB++;
         }
-        if (length2 > length1) {
-            point1 = headB;
-            point2 = headA;
+        if (lenA < lenB) {
+            pointA = headB;
+            pointB = headA;
         } else {
-            point1 = headA;
-            point2 = headB;
+            pointA = headA;
+            pointB = headB;
         }
-        for (int i = 0; i < Math.abs(length2 - length1); i++) {
-            point1 = point1.next;
+        for (int i = 0; i < Math.abs(lenA - lenB); i++) {
+            pointA = pointA.next;
         }
-        while(point1!=null){
-            if (point1==point2){
-                return point1;
+        while (pointA != null) {
+            if (pointA == pointB) {
+                return pointA;
             }
-            point1 = point1.next;
-            point2 = point2.next;
+            pointA = pointA.next;
+            pointB = pointB.next;
         }
         return null;
     }
@@ -62,6 +62,6 @@ public class C06Intersection {
         point1.next = headCommon;
         point2.next = headCommon;
         ListNode intersectionNode = C06Intersection.getIntersectionNode(headA, headB);
-        System.out.println(intersectionNode!=null?intersectionNode.val:null);
+        System.out.println(intersectionNode != null ? intersectionNode.val : null);
     }
 }

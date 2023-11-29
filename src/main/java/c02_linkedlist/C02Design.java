@@ -1,17 +1,20 @@
 package c02_linkedlist;
 
+import java.util.List;
+
 /**
  * link: https://leetcode.cn/problems/design-linked-list/description/
  */
-public class C02DesignLinkedList {
+public class C02Design {
 
     static class MyLinkedList {
+
         ListNode head;
-        Integer size;
+        int size;
 
         public MyLinkedList() {
-            size = 0;
             head = new ListNode(-1);
+            size = 0;
         }
 
         public int get(int index) {
@@ -48,7 +51,7 @@ public class C02DesignLinkedList {
         }
 
         public void deleteAtIndex(int index) {
-            if (index < 0 || index > size) {
+            if (index < 0 || index >= size) {
                 return;
             }
             ListNode point = head;
@@ -59,11 +62,12 @@ public class C02DesignLinkedList {
             size--;
         }
 
+
         public void printLinkedList() {
-            ListNode point = head.next;
-            while (point != null) {
-                System.out.print(point.val + " ");
-                point = point.next;
+            ListNode temp = head.next;
+            while (temp != null) {
+                System.out.print(temp.val + " ");
+                temp = temp.next;
             }
             System.out.println();
         }

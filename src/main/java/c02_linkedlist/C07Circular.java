@@ -13,7 +13,7 @@ package c02_linkedlist;
  * 解释：链表中有一个环，其尾部连接到第二个节点。
  * link: https://leetcode.cn/problems/linked-list-cycle-ii/description/
  */
-public class C07CircularLinkedList {
+public class C07Circular {
 
     public static ListNode detectCycle(ListNode head) {
         ListNode slow = head;
@@ -42,7 +42,7 @@ public class C07CircularLinkedList {
         node2.next = node3;
         node3.next = node4;
         node4.next = node2;
-        ListNode listNode = C07CircularLinkedList.detectCycle(node1);
-        System.out.println(listNode.val);
+        ListNode listNode = C07Circular.detectCycle(node1);
+        System.out.println(listNode == null ? null : listNode.val);
     }
 }

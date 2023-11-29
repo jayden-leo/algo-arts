@@ -10,7 +10,7 @@ package c01_array;
  * 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
  * link: https://leetcode.cn/problems/minimum-size-subarray-sum/description/
  */
-public class C04SmallSubArray {
+public class C04SmallSub {
 
     public static int minSubArrayLen(int target, int[] nums) {
         int left = 0;
@@ -19,17 +19,18 @@ public class C04SmallSubArray {
         int minLength = Integer.MAX_VALUE;
         for (; right < nums.length; right++) {
             sum += nums[right];
-            while (sum >= target) {
-                minLength = Math.min(minLength,right-left+1);
-                sum -= nums[left++];
+            while (sum >= target) { // 只要累计超过或者等于这个数了，左边指针就可以移动了，最后的结果+1即可
+                minLength = Math.min(minLength, right - left + 1);
+                sum -= nums[left];
+                left++;
             }
         }
-        return minLength==Integer.MAX_VALUE?0:minLength;
+        return minLength == Integer.MAX_VALUE ? 0 : minLength;
     }
 
     public static void main(String[] args) {
-        int[] nums = {2, 3, 1, 2, 4, 3};
-        int result = C04SmallSubArray.minSubArrayLen(7, nums);
+        int[] nums = {1,2,3,4,5};
+        int result = C04SmallSub.minSubArrayLen(15, nums);
         System.out.println(result);
     }
 }

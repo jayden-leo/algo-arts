@@ -7,14 +7,17 @@ package c02_linkedlist;
 public class C01RemoveElements {
 
     public static ListNode removeElements(ListNode head, int val) {
+        if (head == null) {
+            return head;
+        }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode pre = dummy;
-        ListNode cur = head;
-        while(cur!=null){
-            if (cur.val==val){
+        ListNode pre = dummy; // 要连接的节点
+        ListNode cur = head; // 当前判断的节点
+        while (cur != null) {
+            if (cur.val == val) {
                 pre.next = cur.next;
-            }else{
+            } else {
                 pre = cur;
             }
             cur = cur.next;
@@ -23,7 +26,7 @@ public class C01RemoveElements {
     }
 
     public static void main(String[] args) {
-        ListNode listNode = new ListNode(1,new ListNode(2,new ListNode(6,new ListNode(3,new ListNode(4,new ListNode(5,new ListNode(6)))))));
+        ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(6, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6)))))));
         ListNode head = C01RemoveElements.removeElements(listNode, 6);
         while (head != null) {
             System.out.print(head.val + " ");

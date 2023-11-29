@@ -9,13 +9,15 @@ package c02_linkedlist;
  */
 public class C04ExchangeEachTwo {
     public static ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode pre = dummy;
         ListNode cur = head;
-        ListNode next = null;
         while (cur != null && cur.next != null) {
-            next = cur.next.next;
+            ListNode next = cur.next.next;
             pre.next = cur.next;
             cur.next.next = cur;
             cur.next = next;

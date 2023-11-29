@@ -12,18 +12,18 @@ package c01_array;
 public class C03Square {
 
     public static int[] sortedSquares(int[] nums) {
-        int[] result = new int[nums.length];
-        int index = result.length-1;
-        int left = 0;
-        int right = nums.length - 1;
-        while (left <= right) {
+        int[] res = new int[nums.length]; // 结果存放
+        int curIndex = res.length - 1; // 结果当前赋值索引
+        int left = 0; // 目标左边索引
+        int right = nums.length - 1; // 目标右边索引
+        while (left <= right) { // 两边索引不停向中间靠，比较哪个大，注意只能比较大而不能比较小
             if (nums[left] * nums[left] > nums[right] * nums[right]) {
-                result[index--] = nums[left]*nums[left++];
-            }else{
-                result[index--] = nums[right]*nums[right--];
+                res[curIndex--] = nums[left] * nums[left++];
+            } else {
+                res[curIndex--] = nums[right] * nums[right--];
             }
         }
-        return result;
+        return res;
     }
 
     public static void main(String[] args) {

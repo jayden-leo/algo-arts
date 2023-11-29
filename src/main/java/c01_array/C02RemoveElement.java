@@ -15,9 +15,9 @@ public class C02RemoveElement {
     public static int removeElement(int[] nums, int val) {
         int slow = 0;
         for (int fast = 0; fast < nums.length; fast++) {
-            if (nums[fast]!=val){
-                nums[slow++] = nums[fast];
-            }
+           if (nums[fast]!=val){ //只要不是要移除的元素就让slow将这个位置赋值。
+               nums[slow++] = nums[fast];
+           }
         }
         return slow;
     }

@@ -19,30 +19,30 @@ import java.util.HashSet;
  * 1^2 + 0^2 + 0^2 = 1
  * link: https://leetcode.cn/problems/happy-number/
  */
-public class LC202_HappyNum {
+public class C03HappyNum {
     public boolean isHappy(int n) {
         HashSet<Integer> set = new HashSet<>();
         set.add(n);
-        n = getNextNum(n);
+        n = getNextN(n);
         while (n!=1 && !set.contains(n)) {
             set.add(n);
-            n = getNextNum(n);
+            n = getNextN(n);
         }
         return n==1;
     }
 
-    private int getNextNum(int n) {
-        int result = 0;
+    private int getNextN(int n) {
+        int sum = 0;
         while (n > 0) {
-            result += (n % 10) * (n % 10);
-            n = n / 10;
+            sum += (n % 10) * (n % 10);
+            n /= 10;
         }
-        return result;
+        return sum;
     }
 
 
     public static void main(String[] args) {
-        LC202_HappyNum lc202_happyNum = new LC202_HappyNum();
+        C03HappyNum lc202_happyNum = new C03HappyNum();
         boolean result = lc202_happyNum.isHappy(19);
         System.out.println(result);
     }

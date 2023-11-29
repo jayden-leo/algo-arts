@@ -10,30 +10,31 @@ package c01_array;
 public class C05SpiralMatrix {
 
     public static int[][] generateMatrix(int n) {
-        int[][] result = new int[n][n];
+        int[][] res = new int[n][n];
         int start = 0;
-        int rowIndex;
-        int colIndex;
         int count = 1;
-        for (int i = 0; i < n / 2; i++) {
-            for (colIndex = start; colIndex < n - start - 1; colIndex++) {
-                result[start][colIndex] = count++;
+        int x = 0;
+        int y;
+        for (int i = 1; i <= n / 2; i++) { // 一共要循环n/2次
+            for (y = start; y < n - i; y++) {
+                res[x][y] = count++;
             }
-            for (rowIndex = start; rowIndex < n - start - 1; rowIndex++) {
-                result[rowIndex][colIndex] = count++;
+            for (; x < n - i; x++) {
+                res[x][y] = count++;
             }
-            for (; colIndex > start; colIndex--) {
-                result[rowIndex][colIndex] = count++;
+            for (; y > start; y--) {
+                res[x][y] = count++;
             }
-            for (; rowIndex > start; rowIndex--) {
-                result[rowIndex][colIndex] = count++;
+            for (; x > start; x--) {
+                res[x][y] = count++;
             }
-            start++;
+            start+=1;
+            x = start;
         }
-        if (n % 2 == 1) {
-            result[start][start] = count;
+        if (n % 2 == 1) { // 如果是奇数，中心还有一个数要填充
+            res[start][start] = count;
         }
-        return result;
+        return res;
     }
 
     public static void main(String[] args) {

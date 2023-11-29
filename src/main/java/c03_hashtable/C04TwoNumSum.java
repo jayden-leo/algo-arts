@@ -12,24 +12,24 @@ import java.util.HashMap;
  * 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
  * link: https://leetcode.cn/problems/two-sum/
  */
-public class LC1_TwoNumSum {
+public class C04TwoNumSum {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int[] result = new int[2];
         for (int i = 0; i < nums.length; i++) {
             int needN = target - nums[i];
-            if (map.containsKey(needN)){
+            if (map.containsKey(needN)) {
                 result[0] = map.get(needN);
                 result[1] = i;
             }
-            map.put(nums[i],i);
+            map.put(nums[i], i);
         }
         return result;
     }
 
     public static void main(String[] args) {
         int[] nums = new int[]{3, 2, 4};
-        LC1_TwoNumSum lc1_twoNumSum = new LC1_TwoNumSum();
+        C04TwoNumSum lc1_twoNumSum = new C04TwoNumSum();
         int[] ints = lc1_twoNumSum.twoSum(nums, 6);
         for (int anInt : ints) {
             System.out.print(anInt + " ");

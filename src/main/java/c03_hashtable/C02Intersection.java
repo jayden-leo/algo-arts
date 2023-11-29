@@ -13,26 +13,28 @@ import java.util.HashSet;
  * 解释：[4,9] 也是可通过的
  * link: https://leetcode.cn/problems/intersection-of-two-arrays/description/
  */
-public class LC349_ArrayIntersection {
+public class C02Intersection {
 
     public int[] intersection(int[] nums1, int[] nums2) {
-        HashSet<Integer> nums1Set = new HashSet<>();
-        HashSet<Integer> nums2Set = new HashSet<>();
-        for (int num : nums1) {
-            nums1Set.add(num);
+        HashSet<Integer> set1 = new HashSet<>();
+        HashSet<Integer> set2 = new HashSet<>();
+        // 一个hashset用于比较
+        for (int i : nums1) {
+            set1.add(i);
         }
-        for (int num : nums2){
-            if (nums1Set.contains(num)){
-                nums2Set.add(num);
+        // 一个hashset用于存放结果
+        for (int i : nums2) {
+            if (set1.contains(i)){
+                set2.add(i);
             }
         }
-        return nums2Set.stream().mapToInt(Integer::intValue).toArray();
+        return set2.stream().mapToInt(Integer::intValue).toArray();
     }
 
     public static void main(String[] args) {
         int[] num1 = {1,2,2,1};
         int[] num2 = {2,2};
-        LC349_ArrayIntersection lc349_arrayIntersection = new LC349_ArrayIntersection();
+        C02Intersection lc349_arrayIntersection = new C02Intersection();
         int[] result = lc349_arrayIntersection.intersection(num1, num2);
         for (int i : result) {
             System.out.print(i+" ");
