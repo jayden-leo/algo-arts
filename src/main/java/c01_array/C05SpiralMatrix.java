@@ -9,36 +9,36 @@ package c01_array;
  */
 public class C05SpiralMatrix {
 
-    public static int[][] generateMatrix(int n) {
+    public int[][] generateMatrix(int n) {
         int[][] res = new int[n][n];
         int start = 0;
+        int row = 0;
+        int col = 0;
         int count = 1;
-        int x = 0;
-        int y;
-        for (int i = 1; i <= n / 2; i++) { // 一共要循环n/2次
-            for (y = start; y < n - i; y++) {
-                res[x][y] = count++;
+        for (int i = 1; i <= n / 2; i++) {
+            for (col = start; col < n - i; col++) {
+                res[row][col] = count++;
             }
-            for (; x < n - i; x++) {
-                res[x][y] = count++;
+            for (row = start; row < n - i; row++) {
+                res[row][col] = count++;
             }
-            for (; y > start; y--) {
-                res[x][y] = count++;
+            for (; col > start; col--) {
+                res[row][col] = count++;
             }
-            for (; x > start; x--) {
-                res[x][y] = count++;
+            for (; row > start; row--) {
+                res[row][col] = count++;
             }
-            start+=1;
-            x = start;
+            start++;
+            row=start;
         }
-        if (n % 2 == 1) { // 如果是奇数，中心还有一个数要填充
+        if (n % 2 == 1) {
             res[start][start] = count;
         }
         return res;
     }
 
     public static void main(String[] args) {
-        int[][] result = C05SpiralMatrix.generateMatrix(5);
+        int[][] result = new C05SpiralMatrix().generateMatrix(4);
         for (int[] ints : result) {
             for (int anInt : ints) {
                 System.out.print(anInt + " ");

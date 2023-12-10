@@ -12,25 +12,23 @@ package c01_array;
  */
 public class C04SmallSub {
 
-    public static int minSubArrayLen(int target, int[] nums) {
-        int left = 0;
-        int right = 0;
+    public int minSubArrayLen(int target, int[] nums) {
         int sum = 0;
-        int minLength = Integer.MAX_VALUE;
-        for (; right < nums.length; right++) {
+        int len = Integer.MAX_VALUE;
+        int left = 0;
+        for (int right = 0; right < nums.length; right++) {
             sum += nums[right];
-            while (sum >= target) { // 只要累计超过或者等于这个数了，左边指针就可以移动了，最后的结果+1即可
-                minLength = Math.min(minLength, right - left + 1);
-                sum -= nums[left];
-                left++;
+            while (sum >= target) {
+                len = Math.min(len, right - left + 1);
+                sum -= nums[left++];
             }
         }
-        return minLength == Integer.MAX_VALUE ? 0 : minLength;
+        return len == Integer.MAX_VALUE ? 0 : len;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,2,3,4,5};
-        int result = C04SmallSub.minSubArrayLen(15, nums);
+        int[] nums = {2, 3, 1, 2, 4, 3};
+        int result = new C04SmallSub().minSubArrayLen(7, nums);
         System.out.println(result);
     }
 }

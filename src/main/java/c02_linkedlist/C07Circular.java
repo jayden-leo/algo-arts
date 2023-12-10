@@ -15,17 +15,17 @@ package c02_linkedlist;
  */
 public class C07Circular {
 
-    public static ListNode detectCycle(ListNode head) {
+    public ListNode detectCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
         while (fast != null && fast.next != null) {
-            slow = slow.next;
             fast = fast.next.next;
-            if (slow == fast) {
+            slow = slow.next;
+            if (fast == slow) {
                 slow = head;
-                while (slow != fast) {
-                    slow = slow.next;
+                while(fast!=slow){
                     fast = fast.next;
+                    slow = slow.next;
                 }
                 return slow;
             }
@@ -42,7 +42,7 @@ public class C07Circular {
         node2.next = node3;
         node3.next = node4;
         node4.next = node2;
-        ListNode listNode = C07Circular.detectCycle(node1);
+        ListNode listNode = new C07Circular().detectCycle(node1);
         System.out.println(listNode == null ? null : listNode.val);
     }
 }

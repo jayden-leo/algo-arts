@@ -1,5 +1,7 @@
 package c01_array;
 
+import java.util.Arrays;
+
 /**
  * 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。
  * 示例 1：
@@ -11,16 +13,17 @@ package c01_array;
  */
 public class C03Square {
 
-    public static int[] sortedSquares(int[] nums) {
-        int[] res = new int[nums.length]; // 结果存放
-        int curIndex = res.length - 1; // 结果当前赋值索引
-        int left = 0; // 目标左边索引
-        int right = nums.length - 1; // 目标右边索引
-        while (left <= right) { // 两边索引不停向中间靠，比较哪个大，注意只能比较大而不能比较小
+    public int[] sortedSquares(int[] nums) {
+        int[] res = new int[nums.length];
+        int index = res.length-1;
+        Arrays.sort(nums);
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
             if (nums[left] * nums[left] > nums[right] * nums[right]) {
-                res[curIndex--] = nums[left] * nums[left++];
-            } else {
-                res[curIndex--] = nums[right] * nums[right--];
+                res[index--] = nums[left]*nums[left++];
+            }else{
+                res[index--] = nums[right]*nums[right--];
             }
         }
         return res;
@@ -28,7 +31,7 @@ public class C03Square {
 
     public static void main(String[] args) {
         int[] nums = {-4, -1, 0, 3, 10};
-        int[] result = C03Square.sortedSquares(nums);
+        int[] result = new C03Square().sortedSquares(nums);
         for (int num : result) {
             System.out.print(num + " ");
         }

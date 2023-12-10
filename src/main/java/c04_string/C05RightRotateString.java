@@ -16,29 +16,28 @@ import java.util.Scanner;
  * fgabcde
  * link: https://kamacoder.com/problempage.php?pid=1065
  */
-public class KMC55_RightRotateString {
+public class C05RightRotateString {
 
     public String rightRotateString(int k, String s) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder result = new StringBuilder();
         int index = s.length() - k;
         while (index < s.length()) {
-            sb.append(s.charAt(index++));
+            result.append(s.charAt(index++));
         }
-        int start = 0;
-        while (start < s.length() - k) {
-            sb.append(s.charAt(start++));
+        index = 0;
+        while (index < s.length() - k) {
+            result.append(s.charAt(index++));
         }
-        return sb.toString();
+        return result.toString();
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
 //        int k = scanner.nextInt();
 //        String s = scanner.next();
         int k = 2;
         String s = "abcdefg";
-        KMC55_RightRotateString kmc55_rightRotateString = new KMC55_RightRotateString();
-        String result = kmc55_rightRotateString.rightRotateString(k, s);
+        String result = new C05RightRotateString().rightRotateString(k, s);
         System.out.println(result);
     }
 }

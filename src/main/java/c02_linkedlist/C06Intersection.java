@@ -14,7 +14,7 @@ package c02_linkedlist;
  * link: https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/description/
  */
 public class C06Intersection {
-    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode pointA = headA;
         ListNode pointB = headB;
         int lenA = 0;
@@ -37,8 +37,8 @@ public class C06Intersection {
         for (int i = 0; i < Math.abs(lenA - lenB); i++) {
             pointA = pointA.next;
         }
-        while (pointA != null) {
-            if (pointA == pointB) {
+        while(pointA!=null){
+            if (pointA==pointB){
                 return pointA;
             }
             pointA = pointA.next;
@@ -61,7 +61,7 @@ public class C06Intersection {
         }
         point1.next = headCommon;
         point2.next = headCommon;
-        ListNode intersectionNode = C06Intersection.getIntersectionNode(headA, headB);
+        ListNode intersectionNode = new C06Intersection().getIntersectionNode(headA, headB);
         System.out.println(intersectionNode != null ? intersectionNode.val : null);
     }
 }

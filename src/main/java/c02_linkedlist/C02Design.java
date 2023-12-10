@@ -41,21 +41,21 @@ public class C02Design {
                 return;
             }
             ListNode point = head;
+            ListNode newNode = new ListNode(val);
             for (int i = 0; i < index; i++) {
                 point = point.next;
             }
-            ListNode node = new ListNode(val);
-            node.next = point.next;
-            point.next = node;
+            newNode.next = point.next;
+            point.next = newNode;
             size++;
         }
 
         public void deleteAtIndex(int index) {
-            if (index < 0 || index >= size) {
+            if (index<0||index>=size){
                 return;
             }
             ListNode point = head;
-            for (int i = 0; i < index; i++) {
+            for (int i=0;i<index;i++){
                 point = point.next;
             }
             point.next = point.next.next;
@@ -64,10 +64,10 @@ public class C02Design {
 
 
         public void printLinkedList() {
-            ListNode temp = head.next;
-            while (temp != null) {
-                System.out.print(temp.val + " ");
-                temp = temp.next;
+            ListNode point = head.next;
+            while(point!=null){
+                System.out.print(point.val+" ");
+                point = point.next;
             }
             System.out.println();
         }

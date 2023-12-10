@@ -17,12 +17,10 @@ public class C02Intersection {
 
     public int[] intersection(int[] nums1, int[] nums2) {
         HashSet<Integer> set1 = new HashSet<>();
-        HashSet<Integer> set2 = new HashSet<>();
-        // 一个hashset用于比较
         for (int i : nums1) {
             set1.add(i);
         }
-        // 一个hashset用于存放结果
+        HashSet<Integer> set2 = new HashSet<>();
         for (int i : nums2) {
             if (set1.contains(i)){
                 set2.add(i);
@@ -34,8 +32,7 @@ public class C02Intersection {
     public static void main(String[] args) {
         int[] num1 = {1,2,2,1};
         int[] num2 = {2,2};
-        C02Intersection lc349_arrayIntersection = new C02Intersection();
-        int[] result = lc349_arrayIntersection.intersection(num1, num2);
+        int[] result = new C02Intersection().intersection(num1, num2);
         for (int i : result) {
             System.out.print(i+" ");
         }

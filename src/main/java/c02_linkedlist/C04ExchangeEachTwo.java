@@ -8,16 +8,17 @@ package c02_linkedlist;
  * link: https://leetcode.cn/problems/swap-nodes-in-pairs/description/
  */
 public class C04ExchangeEachTwo {
-    public static ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) {
+    public ListNode swapPairs(ListNode head) {
+        if (head==null||head.next==null){
             return head;
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode pre = dummy;
         ListNode cur = head;
-        while (cur != null && cur.next != null) {
-            ListNode next = cur.next.next;
+        ListNode next;
+        while(cur!=null&&cur.next!=null){
+            next = cur.next.next;
             pre.next = cur.next;
             cur.next.next = cur;
             cur.next = next;
@@ -29,7 +30,7 @@ public class C04ExchangeEachTwo {
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
-        head = C04ExchangeEachTwo.swapPairs(head);
+        head = new C04ExchangeEachTwo().swapPairs(head);
         while (head != null) {
             System.out.print(head.val + " ");
             head = head.next;

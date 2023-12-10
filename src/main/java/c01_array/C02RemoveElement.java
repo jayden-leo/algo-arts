@@ -12,12 +12,12 @@ package c01_array;
  * link: https://leetcode.cn/problems/remove-element/
  */
 public class C02RemoveElement {
-    public static int removeElement(int[] nums, int val) {
+    public int removeElement(int[] nums, int val) {
         int slow = 0;
         for (int fast = 0; fast < nums.length; fast++) {
-           if (nums[fast]!=val){ //只要不是要移除的元素就让slow将这个位置赋值。
-               nums[slow++] = nums[fast];
-           }
+            if (nums[fast]!=val){
+                nums[slow++] = nums[fast];
+            }
         }
         return slow;
     }
@@ -25,7 +25,7 @@ public class C02RemoveElement {
     public static void main(String[] args) {
         int[] nums = {3, 2, 2, 3};
         int val = 3;
-        int index = removeElement(nums, val);
+        int index = new C02RemoveElement().removeElement(nums, val);
         System.out.println(index);
     }
 }

@@ -11,24 +11,23 @@ package c04_string;
  * 输出：["h","a","n","n","a","H"]
  * link: https://leetcode.cn/problems/reverse-string/
  */
-public class LC344_ReverseString {
+public class C01ReverseString {
     public void reverseString(char[] s) {
-        int left=0;
-        int right=s.length-1;
-        while(left<right){
-            char temp = s[left];
+        int left = 0;
+        int right = s.length - 1;
+        char temp;
+        while (left < right) {
+            temp = s[left];
             s[left] = s[right];
             s[right] = temp;
             left++;
             right--;
         }
-        System.out.println(s);
     }
 
     public static void main(String[] args) {
-        char[] s = {'h','e','l','l','o'};
-        System.out.println(s);
-        LC344_ReverseString lc344_reverseString = new LC344_ReverseString();
-        lc344_reverseString.reverseString(s);
+        char[] s = {'h', 'e', 'l', 'l', 'o'};
+        new C01ReverseString().reverseString(s);
+        System.out.print(s);
     }
 }

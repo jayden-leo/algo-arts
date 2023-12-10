@@ -15,22 +15,23 @@ import java.util.HashMap;
 public class C04TwoNumSum {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
-        int[] result = new int[2];
         for (int i = 0; i < nums.length; i++) {
-            int needN = target - nums[i];
-            if (map.containsKey(needN)) {
-                result[0] = map.get(needN);
-                result[1] = i;
+            int needNum = target - nums[i];
+            if (map.containsKey(needNum)) {
+                int[] res = new int[2];
+                res[0] = map.get(needNum);
+                res[1] = i;
+                return res;
+            } else {
+                map.put(nums[i], i);
             }
-            map.put(nums[i], i);
         }
-        return result;
+        return null;
     }
 
     public static void main(String[] args) {
         int[] nums = new int[]{3, 2, 4};
-        C04TwoNumSum lc1_twoNumSum = new C04TwoNumSum();
-        int[] ints = lc1_twoNumSum.twoSum(nums, 6);
+        int[] ints = new C04TwoNumSum().twoSum(nums, 6);
         for (int anInt : ints) {
             System.out.print(anInt + " ");
         }

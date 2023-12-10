@@ -13,29 +13,30 @@ import java.util.Set;
  */
 public class CC02LeastDelToEvertSame {
     public ListNode solve(ListNode head) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        ListNode point = head;
+        while (point != null) {
+            map.put(point.val, map.getOrDefault(point.val, 0) + 1);
+            point = point.next;
+        }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        while (head != null) {
-            map.put(head.val, map.getOrDefault(head.val, 0) + 1);
-            head = head.next;
-        }
-        int maxNum = -1;
-        int flagNum = -1;
+        int flagNum = 0;
+        int maxNum = 0;
         Set<Integer> keys = map.keySet();
-        for (int key : keys) {
-            if (map.get(key) > maxNum) {
+        for (Integer key : keys) {
+            Integer num = map.get(key);
+            if (num > maxNum) {
+                maxNum = num;
                 flagNum = key;
-                maxNum = map.get(key);
             }
         }
-        head = dummy.next;
         ListNode pre = dummy;
         ListNode cur = head;
-        while (cur != null) {
-            if (cur.val != flagNum) {
+        while(cur!=null){
+            if (cur.val!=flagNum){
                 pre.next = cur.next;
-            } else {
+            }else{
                 pre = cur;
             }
             cur = cur.next;
@@ -43,12 +44,12 @@ public class CC02LeastDelToEvertSame {
         return dummy.next;
     }
 
+
     public static void main(String[] args) {
         int[] nums = {1, 2, 2, 3, 1};
         ListNode head = new ListNode(1, new ListNode(2, new ListNode(2, new ListNode(3, new ListNode(1)))));
 //        ListNode head = new ListNode(5);
-        CC02LeastDelToEvertSame c002_leastDeleteToSameNums = new CC02LeastDelToEvertSame();
-        ListNode solve = c002_leastDeleteToSameNums.solve(head);
+        ListNode solve = new CC02LeastDelToEvertSame().solve(head);
         while (solve != null) {
             System.out.print(solve.val + " ");
             solve = solve.next;

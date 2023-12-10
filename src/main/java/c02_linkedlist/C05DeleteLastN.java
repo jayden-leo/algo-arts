@@ -9,7 +9,7 @@ package c02_linkedlist;
  */
 public class C05DeleteLastN {
 
-    public static ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode slow = dummy;
@@ -17,7 +17,7 @@ public class C05DeleteLastN {
         for (int i = 0; i < n; i++) {
             fast = fast.next;
         }
-        while (fast != null && fast.next != null) {
+        while(fast.next!=null){
             fast = fast.next;
             slow = slow.next;
         }
@@ -27,7 +27,7 @@ public class C05DeleteLastN {
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-        head = C05DeleteLastN.removeNthFromEnd(head, 2);
+        head = new C05DeleteLastN().removeNthFromEnd(head, 2);
         while (head != null) {
             System.out.print(head.val + " ");
             head = head.next;

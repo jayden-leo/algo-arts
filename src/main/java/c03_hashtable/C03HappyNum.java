@@ -23,27 +23,26 @@ public class C03HappyNum {
     public boolean isHappy(int n) {
         HashSet<Integer> set = new HashSet<>();
         set.add(n);
-        n = getNextN(n);
-        while (n!=1 && !set.contains(n)) {
+        n = getNext(n);
+        while (n != 1 && !set.contains(n)) {
             set.add(n);
-            n = getNextN(n);
+            n = getNext(n);
         }
-        return n==1;
+        return n == 1;
     }
 
-    private int getNextN(int n) {
+    private int getNext(int n) {
         int sum = 0;
         while (n > 0) {
             sum += (n % 10) * (n % 10);
-            n /= 10;
+            n = n / 10;
         }
         return sum;
     }
 
 
     public static void main(String[] args) {
-        C03HappyNum lc202_happyNum = new C03HappyNum();
-        boolean result = lc202_happyNum.isHappy(19);
+        boolean result = new C03HappyNum().isHappy(7);
         System.out.println(result);
     }
 }

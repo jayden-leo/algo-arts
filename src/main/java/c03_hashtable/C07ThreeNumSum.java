@@ -21,13 +21,42 @@ import java.util.List;
  */
 public class C07ThreeNumSum {
     public List<List<Integer>> threeSum(int[] nums) {
-        return null;
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums.length < 3) {
+            return res;
+        }
+        Arrays.sort(nums);
+        for (int point = 0; point < nums.length - 2; point++) {
+            if (point != 0 && nums[point] == nums[point - 1]) {
+                continue;
+            }
+            int left = point + 1;
+            int right = nums.length - 1;
+            while (left < right) {
+                int sum = nums[point] + nums[left] + nums[right];
+                if (sum > 0) {
+                    right--;
+                } else if (sum < 0) {
+                    left++;
+                } else {
+                    ArrayList<Integer> answer = new ArrayList<>();
+                    answer.add(nums[point]);
+                    answer.add(nums[left]);
+                    answer.add(nums[right]);
+                    res.add(answer);
+                    while (left < right && nums[left] == nums[left + 1]) left++;
+                    while (left < right && nums[right] == nums[right - 1]) right--;
+                    left++;
+                    right--;
+                }
+            }
+        }
+        return res;
     }
 
     public static void main(String[] args) {
-        int[] nums = {0, 0, 0, 0};
-        C07ThreeNumSum lc15_threeNumSum = new C07ThreeNumSum();
-        List<List<Integer>> lists = lc15_threeNumSum.threeSum(nums);
+        int[] nums = {-1, 0, 1, 2, -1, -4};
+        List<List<Integer>> lists = new C07ThreeNumSum().threeSum(nums);
         for (List<Integer> list : lists) {
             System.out.println(list);
         }

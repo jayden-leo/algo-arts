@@ -11,21 +11,25 @@ package c02_linkedlist;
 public class CC01TeamOrder {
 
     public static void main(String[] args) {
-        orderTeam2(17);
+        new CC01TeamOrder().orderTeam(17);
     }
 
     // 方法1：双指针法
-    private static void orderTeam2(int n) {
+    private void orderTeam(int n) {
         int[] res = new int[n];
         for (int i = 1; i <= res.length; i++) {
             res[i - 1] = i;
         }
-        int count = 0;
-        for (int curIndex = 0; curIndex < n; curIndex += count) {
-            count++;
+        for (int re : res) {
+            System.out.print(re + " ");
+        }
+        System.out.println();
+        int count = 1;
+        for (int index = 0; index < res.length; index += count++) {
+            System.out.print(index + " ");
             if (count % 2 == 1) {
-                int left = curIndex;
-                int right = Math.min(curIndex + count - 1, n-1);
+                int left = index;
+                int right = Math.min(n - 1, left + count - 1);
                 while (left <= right) {
                     int temp = res[left];
                     res[left] = res[right];
@@ -36,14 +40,15 @@ public class CC01TeamOrder {
             }
         }
         System.out.println();
-        for (int num : res) {
-            System.out.print(num+" ");
+        for (int re : res) {
+            System.out.print(re+" ");
         }
         System.out.println();
     }
 
+
     // 方法2：数字模拟
-    private static void orderTeam(int n) {
+    private void orderTeam2(int n) {
         int[] res = new int[n];
         int curIndex = 0;
         int curNum = 1;

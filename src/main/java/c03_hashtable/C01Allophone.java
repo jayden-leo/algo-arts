@@ -13,6 +13,23 @@ package c03_hashtable;
  */
 public class C01Allophone {
 
+    // 容量有限的情况下使用数组，最快
+    public boolean isAnagram(String s, String t) {
+        int[] counts = new int[26];
+        for (char c : s.toCharArray()) {
+            counts[c - 'a']++;
+        }
+        for (char c : t.toCharArray()) {
+            counts[c - 'a']--;
+        }
+        for (int count : counts) {
+            if (count != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         String a = "anagram";
         String b = "nagaram";
@@ -21,20 +38,5 @@ public class C01Allophone {
         System.out.println(result);
     }
 
-    // 容量有限的情况下使用数组，最快
-    public boolean isAnagram(String s, String t) {
-        int[] nums = new int[26];
-        for (char c : s.toCharArray()) {
-            nums[c - 'a']++;
-        }
-        for (char c : t.toCharArray()) {
-            nums[c - 'a']--;
-        }
-        for (int num : nums) {
-            if (num > 0) {
-                return false;
-            }
-        }
-        return true;
-    }
+
 }

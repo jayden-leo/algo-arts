@@ -1,5 +1,6 @@
 package c04_string;
 
+
 /**
  * 给定一个字符串 s 和一个整数 k，从字符串开头算起，每计数至 2k 个字符，就反转这 2k 字符中的前 k 个字符。
  * 如果剩余字符少于 k 个，则将剩余字符全部反转。
@@ -12,12 +13,12 @@ package c04_string;
  * 输出："bacd"
  * link: https://leetcode.cn/problems/reverse-string-ii/description/
  */
-public class LC541_ReverseStringII {
+public class C02ReverseStringII {
     public String reverseStr(String s, int k) {
         char[] chars = s.toCharArray();
-        for (int curIndex = 0; curIndex < chars.length; curIndex += 2 * k) {
-            int left = curIndex;
-            int right = Math.min(chars.length - 1, left + k - 1);
+        for (int i = 0; i < chars.length; i += 2 * k) {
+            int left = i;
+            int right = Math.min(i + k - 1, s.length() - 1);
             while (left < right) {
                 char temp = chars[left];
                 chars[left] = chars[right];
@@ -31,8 +32,7 @@ public class LC541_ReverseStringII {
 
     public static void main(String[] args) {
         String s = "abcdefg";
-        LC541_ReverseStringII lc541_reverseStringII = new LC541_ReverseStringII();
-        String result = lc541_reverseStringII.reverseStr(s, 2);
+        String result = new C02ReverseStringII().reverseStr(s, 2);
         System.out.println(result);
     }
 }

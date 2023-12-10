@@ -10,11 +10,11 @@ package c01_array;
  */
 public class C01BinarySearch {
 
-    public static int search(int[] nums, int target) {
+    public int search(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
         while (left <= right) {
-            int middle = left + ((right - left) >> 2); // 找到中间位置
+            int middle = left + ((right - left) >> 1);
             if (nums[middle] == target) {
                 return middle;
             } else if (nums[middle] > target) {
@@ -28,7 +28,7 @@ public class C01BinarySearch {
 
     public static void main(String[] args) {
         int[] nums = {-1, 0, 3, 5, 9, 12};
-        int index = C01BinarySearch.search(nums, 9);
+        int index = new C01BinarySearch().search(nums, 9);
         System.out.println(index);
     }
 }
